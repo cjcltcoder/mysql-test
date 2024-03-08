@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 
 // Function to encrypt passwords using bcrypt
 async function encryptPassword(password) {
-    // Generate salt
+    // Generate salt - this adds extra layer of security by adding random data to password before hashing
     const saltRounds = 10;
     const salt = await bcrypt.genSalt(saltRounds);
     
@@ -12,7 +12,7 @@ async function encryptPassword(password) {
     return hashedPassword;
 }
 
-// Function to transform dates to MM-DD-YY format
+
 function transformDate(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');

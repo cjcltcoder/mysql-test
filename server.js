@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
 
 app.use(express.json());
 
-// Route handler for user signup
+// Route for singup
 app.post('/api/signup', async (req, res) => {
     const { username, password } = req.body;
 
@@ -37,7 +37,7 @@ app.post('/api/signup', async (req, res) => {
     }
 });
 
-// Route handler for retrieving data
+// Route to retrieve data from budget table
 app.get('/', async (req, res) => {
     connection.query('SELECT * FROM budget', function (error, results, fields) {
         if (error) {
@@ -50,6 +50,7 @@ app.get('/', async (req, res) => {
     });
 });
 
+// Route to retrieve data from user table
 app.get('/api/users', async (req, res) => {
     connection.query('SELECT * FROM user', function (error, results, fields) {
         if (error) {
@@ -62,7 +63,7 @@ app.get('/api/users', async (req, res) => {
     });
 });
 
-// Start the server
+
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
